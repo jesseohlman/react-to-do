@@ -4,15 +4,25 @@ import './App.css';
 import ToDo from './components/ToDo.js';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      todos: [
+        {description: 'walk pets', isCompleted: true},
+        {description: 'wash dishes', isCompleted: false},
+        {description: 'eat off dishes', isCompleted: false},
+      ]
+    }
+  }
   render() {
     return (
       <div className="App">
       <ul>
-        <li>tset</li>
-        <ToDo />
-        <ToDo />
+        {this.state.todos.map((todo, index) =>
+        <ToDo key = {index} description={todo.description} isCompleted={todo.isCompleted} />
+
+        )}
       </ul>
-  
       </div>
     );
   }
